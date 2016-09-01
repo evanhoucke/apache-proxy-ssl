@@ -12,7 +12,7 @@ RUN a2enmod ssl proxy_http proxy_ajp proxy_balancer rewrite headers
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 ADD vhost-default.conf /etc/apache2/sites-available/default
 
-RUN touch /var/run/apache2/ssl_mutex
+RUN mkdir -p /var/run/apache2 && touch /var/run/apache2/ssl_mutex
 RUN mkdir /app /conf
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
